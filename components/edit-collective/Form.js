@@ -187,6 +187,14 @@ class EditCollectiveForm extends React.Component {
         id: 'collective.application.description',
         defaultMessage: 'Enable new Collectives to apply to join your Fiscal Host',
       },
+      'hostFeePercentDisplayed.description': {
+        id: 'hostFeePercentDisplayed.Description',
+        defaultMessage: 'Display my default host fee publicly',
+      },
+      'hostFeePercentDisplayed.label': {
+        id: 'hostFeePercentDisplayed.Label',
+        defaultMessage: 'Host fee displayed',
+      },
       'application.message.label': {
         id: 'application.message.label',
         defaultMessage: 'Application instructions',
@@ -776,6 +784,13 @@ class EditCollectiveForm extends React.Component {
           step: '0.01',
           post: '%',
           defaultValue: get(this.state.collective, 'hostFeePercent'),
+          when: () => collective.isHost && (collective.type === ORGANIZATION || collective.hostFeePercent !== 0),
+        },
+        {
+          name: 'hostFeePercentDisplayed',
+          className: 'horizontal',
+          type: 'checkbox',
+          defaultValue: get(this.state.collective, 'hostFeePercentDisplayed'),
           when: () => collective.isHost && (collective.type === ORGANIZATION || collective.hostFeePercent !== 0),
         },
         {

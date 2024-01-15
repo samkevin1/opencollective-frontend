@@ -45,6 +45,7 @@ const collectivePickerSearchQuery = gqlV1/* GraphQL */ `
         }
         imageUrl(height: 64)
         hostFeePercent
+        hostFeePercentDisplayed
         isActive
         isArchived
         isHost

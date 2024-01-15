@@ -39,6 +39,7 @@ export const collectivePageQuery = gqlV1/* GraphQL */ `
       isIncognito
       isGuest
       hostFeePercent
+      hostFeePercentDisplayed
       platformFeePercent
       image
       imageUrl(height: 256)

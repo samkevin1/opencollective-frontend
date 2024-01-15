@@ -76,6 +76,7 @@ const AccountSettings = ({ account, section }) => {
       'image',
       'backgroundImage',
       'hostFeePercent',
+      'hostFeePercentDisplayed',
       'isActive',
     ];
 

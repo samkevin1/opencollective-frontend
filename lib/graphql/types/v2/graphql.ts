@@ -1564,125 +1564,129 @@ export type Collection = {
 };
 
 /** This represents a Collective account */
-export type Collective = Account & AccountWithContributions & AccountWithHost & {
-  __typename?: 'Collective';
-  /** List of activities that the logged-in user is subscribed for this collective */
-  activitySubscriptions?: Maybe<Array<Maybe<ActivitySubscription>>>;
-  /** Date of approval by the Fiscal Host. */
-  approvedAt?: Maybe<Scalars['DateTime']>;
-  backgroundImageUrl?: Maybe<Scalars['String']>;
-  categories: Array<Maybe<Scalars['String']>>;
-  childrenAccounts: AccountCollection;
-  /** The list of connected accounts (Stripe, Twitter, etc ...). Admin only. Scope: "connectedAccounts". */
-  connectedAccounts?: Maybe<Array<Maybe<ConnectedAccount>>>;
-  contributionPolicy?: Maybe<Scalars['String']>;
-  /** All the persons and entities that contribute to this account */
-  contributors: ContributorCollection;
-  conversations: ConversationCollection;
-  /** Returns conversation's tags for collective sorted by popularity */
-  conversationsTags?: Maybe<Array<Maybe<TagStat>>>;
-  /** The time of creation */
-  createdAt?: Maybe<Scalars['DateTime']>;
-  currency?: Maybe<Scalars['String']>;
-  description?: Maybe<Scalars['String']>;
-  /** Returns the emails of the account. Individuals only have one, but organizations can have multiple emails. */
-  emails?: Maybe<Array<Scalars['EmailAddress']>>;
-  expensePolicy?: Maybe<Scalars['String']>;
-  expenses: ExpenseCollection;
-  /** Returns expense tags for collective sorted by popularity */
-  expensesTags?: Maybe<Array<Maybe<TagStat>>>;
-  /** Describes the features enabled and available for this account */
-  features: CollectiveFeatures;
-  feed?: Maybe<Array<Maybe<Activity>>>;
-  /** @deprecated 2022-06-03: Please use repositoryUrl */
-  githubHandle?: Maybe<Scalars['String']>;
-  /** Returns whether this account has a custom image */
-  hasImage: Scalars['Boolean'];
-  /** Returns the Fiscal Host */
-  host?: Maybe<Host>;
-  /** Returns agreements this account has with its host, or null if not enough permissions. */
-  hostAgreements?: Maybe<AgreementCollection>;
-  /** Fees percentage that the host takes for this collective */
-  hostFeePercent?: Maybe<Scalars['Float']>;
-  /** Describe how the host charges the collective */
-  hostFeesStructure?: Maybe<HostFeeStructure>;
-  id: Scalars['String'];
-  imageUrl?: Maybe<Scalars['String']>;
-  /** Returns whether it's active: can accept financial contributions and pay expenses. */
-  isActive: Scalars['Boolean'];
-  /** Returns true if the remote user is an admin of this account */
-  isAdmin: Scalars['Boolean'];
-  /** Returns whether it's approved by the Fiscal Host */
-  isApproved: Scalars['Boolean'];
-  /** Returns whether this account is archived */
-  isArchived: Scalars['Boolean'];
-  /** Whether this account is frozen */
-  isFrozen: Scalars['Boolean'];
-  /** Returns whether the account is setup to Host collectives. */
-  isHost: Scalars['Boolean'];
-  /** Defines if the contributors wants to be incognito (name not displayed) */
-  isIncognito: Scalars['Boolean'];
-  legacyId: Scalars['Int'];
-  /** Private, legal name. Used for expense receipts, taxes, etc. Scope: "account". */
-  legalName?: Maybe<Scalars['String']>;
-  /** The address associated to this account. This field is always public for collectives and events. */
-  location?: Maybe<Location>;
-  longDescription?: Maybe<Scalars['String']>;
-  /** [AUTHENTICATED] Returns the pending invitations */
-  memberInvitations?: Maybe<Array<Maybe<MemberInvitation>>>;
-  memberOf: MemberOfCollection;
-  /** Get all members (admins, members, backers, followers) */
-  members: MemberCollection;
-  /** Public name */
-  name?: Maybe<Scalars['String']>;
-  /** The list of applications created by this account. Admin only. Scope: "applications". */
-  oAuthApplications?: Maybe<OAuthApplicationCollection>;
-  orders: OrderCollection;
-  /** @deprecated 2022-12-16: use parent on AccountWithParent instead */
-  parentAccount?: Maybe<Account>;
-  /** The list of payment methods that this collective can use to pay for Orders. Admin or Host only. Scope: "orders". */
-  paymentMethods?: Maybe<Array<Maybe<PaymentMethod>>>;
-  /** The list of payment methods for this account that are pending a client confirmation (3D Secure / SCA) */
-  paymentMethodsWithPendingConfirmation?: Maybe<Array<Maybe<PaymentMethod>>>;
-  /** The list of payout methods that this collective can use to get paid. In most cases, admin only and scope: "expenses". */
-  payoutMethods?: Maybe<Array<Maybe<PayoutMethod>>>;
-  /** Logged-in user permissions on an account */
-  permissions: AccountPermissions;
-  /** Returns true if a custom contribution to Open Collective can be submitted for contributions made to this account */
-  platformContributionAvailable: Scalars['Boolean'];
-  /** How much platform fees are charged for this account */
-  platformFeePercent: Scalars['Float'];
-  /** Policies for the account. To see non-public policies you need to be admin and have the scope: "account". */
-  policies: Policies;
-  /** @deprecated 2023-01-16: Please use socialLinks */
-  repositoryUrl?: Maybe<Scalars['String']>;
-  settings: Scalars['JSON'];
-  /** The slug identifying the account (ie: babel) */
-  slug: Scalars['String'];
-  socialLinks: Array<SocialLink>;
-  stats?: Maybe<AccountStats>;
-  /** The list of expense types supported by this account */
-  supportedExpenseTypes: Array<ExpenseType>;
-  tags?: Maybe<Array<Maybe<Scalars['String']>>>;
-  tiers: TierCollection;
-  /** Number of unique financial contributors. */
-  totalFinancialContributors: Scalars['Int'];
-  transactions: TransactionCollection;
-  transferwise?: Maybe<TransferWise>;
-  /** @deprecated 2023-01-16: Please use socialLinks */
-  twitterHandle?: Maybe<Scalars['String']>;
-  type: AccountType;
-  updatedAt?: Maybe<Scalars['DateTime']>;
-  /** Updates published by the account. To see unpublished updates, you need to be an admin and have the scope "updates". */
-  updates: UpdateCollection;
-  /** Virtual Cards Merchants used by the account. Admin only. Scope: "virtualCards". */
-  virtualCardMerchants?: Maybe<AccountCollection>;
-  /** Virtual Cards attached to the account. Admin only. Scope: "virtualCards". */
-  virtualCards?: Maybe<VirtualCardCollection>;
-  webhooks: WebhookCollection;
-  /** @deprecated 2023-01-16: Please use socialLinks */
-  website?: Maybe<Scalars['String']>;
-};
+export type Collective = Account &
+  AccountWithContributions &
+  AccountWithHost & {
+    __typename?: 'Collective';
+    /** List of activities that the logged-in user is subscribed for this collective */
+    activitySubscriptions?: Maybe<Array<Maybe<ActivitySubscription>>>;
+    /** Date of approval by the Fiscal Host. */
+    approvedAt?: Maybe<Scalars['DateTime']>;
+    backgroundImageUrl?: Maybe<Scalars['String']>;
+    categories: Array<Maybe<Scalars['String']>>;
+    childrenAccounts: AccountCollection;
+    /** The list of connected accounts (Stripe, Twitter, etc ...). Admin only. Scope: "connectedAccounts". */
+    connectedAccounts?: Maybe<Array<Maybe<ConnectedAccount>>>;
+    contributionPolicy?: Maybe<Scalars['String']>;
+    /** All the persons and entities that contribute to this account */
+    contributors: ContributorCollection;
+    conversations: ConversationCollection;
+    /** Returns conversation's tags for collective sorted by popularity */
+    conversationsTags?: Maybe<Array<Maybe<TagStat>>>;
+    /** The time of creation */
+    createdAt?: Maybe<Scalars['DateTime']>;
+    currency?: Maybe<Scalars['String']>;
+    description?: Maybe<Scalars['String']>;
+    /** Returns the emails of the account. Individuals only have one, but organizations can have multiple emails. */
+    emails?: Maybe<Array<Scalars['EmailAddress']>>;
+    expensePolicy?: Maybe<Scalars['String']>;
+    expenses: ExpenseCollection;
+    /** Returns expense tags for collective sorted by popularity */
+    expensesTags?: Maybe<Array<Maybe<TagStat>>>;
+    /** Describes the features enabled and available for this account */
+    features: CollectiveFeatures;
+    feed?: Maybe<Array<Maybe<Activity>>>;
+    /** @deprecated 2022-06-03: Please use repositoryUrl */
+    githubHandle?: Maybe<Scalars['String']>;
+    /** Returns whether this account has a custom image */
+    hasImage: Scalars['Boolean'];
+    /** Returns the Fiscal Host */
+    host?: Maybe<Host>;
+    /** Returns agreements this account has with its host, or null if not enough permissions. */
+    hostAgreements?: Maybe<AgreementCollection>;
+    /** Fees percentage that the host takes for this collective */
+    hostFeePercent?: Maybe<Scalars['Float']>;
+    /** Displays the host fee percentage */
+    hostFeePercentDisplay?: Maybe<Scalars['Boolean']>;
+    /** Describe how the host charges the collective */
+    hostFeesStructure?: Maybe<HostFeeStructure>;
+    id: Scalars['String'];
+    imageUrl?: Maybe<Scalars['String']>;
+    /** Returns whether it's active: can accept financial contributions and pay expenses. */
+    isActive: Scalars['Boolean'];
+    /** Returns true if the remote user is an admin of this account */
+    isAdmin: Scalars['Boolean'];
+    /** Returns whether it's approved by the Fiscal Host */
+    isApproved: Scalars['Boolean'];
+    /** Returns whether this account is archived */
+    isArchived: Scalars['Boolean'];
+    /** Whether this account is frozen */
+    isFrozen: Scalars['Boolean'];
+    /** Returns whether the account is setup to Host collectives. */
+    isHost: Scalars['Boolean'];
+    /** Defines if the contributors wants to be incognito (name not displayed) */
+    isIncognito: Scalars['Boolean'];
+    legacyId: Scalars['Int'];
+    /** Private, legal name. Used for expense receipts, taxes, etc. Scope: "account". */
+    legalName?: Maybe<Scalars['String']>;
+    /** The address associated to this account. This field is always public for collectives and events. */
+    location?: Maybe<Location>;
+    longDescription?: Maybe<Scalars['String']>;
+    /** [AUTHENTICATED] Returns the pending invitations */
+    memberInvitations?: Maybe<Array<Maybe<MemberInvitation>>>;
+    memberOf: MemberOfCollection;
+    /** Get all members (admins, members, backers, followers) */
+    members: MemberCollection;
+    /** Public name */
+    name?: Maybe<Scalars['String']>;
+    /** The list of applications created by this account. Admin only. Scope: "applications". */
+    oAuthApplications?: Maybe<OAuthApplicationCollection>;
+    orders: OrderCollection;
+    /** @deprecated 2022-12-16: use parent on AccountWithParent instead */
+    parentAccount?: Maybe<Account>;
+    /** The list of payment methods that this collective can use to pay for Orders. Admin or Host only. Scope: "orders". */
+    paymentMethods?: Maybe<Array<Maybe<PaymentMethod>>>;
+    /** The list of payment methods for this account that are pending a client confirmation (3D Secure / SCA) */
+    paymentMethodsWithPendingConfirmation?: Maybe<Array<Maybe<PaymentMethod>>>;
+    /** The list of payout methods that this collective can use to get paid. In most cases, admin only and scope: "expenses". */
+    payoutMethods?: Maybe<Array<Maybe<PayoutMethod>>>;
+    /** Logged-in user permissions on an account */
+    permissions: AccountPermissions;
+    /** Returns true if a custom contribution to Open Collective can be submitted for contributions made to this account */
+    platformContributionAvailable: Scalars['Boolean'];
+    /** How much platform fees are charged for this account */
+    platformFeePercent: Scalars['Float'];
+    /** Policies for the account. To see non-public policies you need to be admin and have the scope: "account". */
+    policies: Policies;
+    /** @deprecated 2023-01-16: Please use socialLinks */
+    repositoryUrl?: Maybe<Scalars['String']>;
+    settings: Scalars['JSON'];
+    /** The slug identifying the account (ie: babel) */
+    slug: Scalars['String'];
+    socialLinks: Array<SocialLink>;
+    stats?: Maybe<AccountStats>;
+    /** The list of expense types supported by this account */
+    supportedExpenseTypes: Array<ExpenseType>;
+    tags?: Maybe<Array<Maybe<Scalars['String']>>>;
+    tiers: TierCollection;
+    /** Number of unique financial contributors. */
+    totalFinancialContributors: Scalars['Int'];
+    transactions: TransactionCollection;
+    transferwise?: Maybe<TransferWise>;
+    /** @deprecated 2023-01-16: Please use socialLinks */
+    twitterHandle?: Maybe<Scalars['String']>;
+    type: AccountType;
+    updatedAt?: Maybe<Scalars['DateTime']>;
+    /** Updates published by the account. To see unpublished updates, you need to be an admin and have the scope "updates". */
+    updates: UpdateCollection;
+    /** Virtual Cards Merchants used by the account. Admin only. Scope: "virtualCards". */
+    virtualCardMerchants?: Maybe<AccountCollection>;
+    /** Virtual Cards attached to the account. Admin only. Scope: "virtualCards". */
+    virtualCards?: Maybe<VirtualCardCollection>;
+    webhooks: WebhookCollection;
+    /** @deprecated 2023-01-16: Please use socialLinks */
+    website?: Maybe<Scalars['String']>;
+  };
 
 
 /** This represents a Collective account */
